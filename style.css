@@ -1,0 +1,32 @@
+body{
+    margin:10px solid black;
+}
+
+#paddleOne{
+    width:20px;
+    height:100px;
+    background-color:orange;
+    position:absolute;
+    top:50%;
+    left:0px;
+    border-radius:40%;
+}
+
+#paddleTwo{
+    width:20px;
+    height:100px;
+    background-color:darkgoldenrod;
+    position:absolute;
+    top:50%;
+    right:0px;
+    border-radius: 40%;
+}
+#ball{
+    width:40px;
+    height:40px;
+    background-color:darkblue;
+    border-radius: 100%;
+    position:absolute;
+    top:50%;
+    left:50%;
+}
