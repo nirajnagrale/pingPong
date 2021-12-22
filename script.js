@@ -9,40 +9,34 @@ let paddleTwoDOWN = false;
 //ball
 
 let ball = document.getElementById("ball");
-let ballSpeedX=1;
-let ballSpeedY=1;
+let ballSpeedX=Math.random()<0.5?-3:3;
+let ballSpeedY=Math.random()<0.5?-3:3;
 
 window.setInterval(()=>{
     ball.style.left = ball.getBoundingClientRect().left+ballSpeedX+"px";
     ball.style.top = ball.getBoundingClientRect().top+ballSpeedY+"px";
     if(ball.getBoundingClientRect().top<0){
-        ballSpeedY=1;
+        ballSpeedY=3;
     }if(ball.getBoundingClientRect().top>window.innerHeight-ball.offsetHeight){
-        ballSpeedY=-1;
+        ballSpeedY=-3;
     }
-    // }if(ball.getBoundingClientRect().left<0){
-    //     ballSpeedX=1;
-    // }if(ball.getBoundingClientRect().left>window.innerWidth-ball.offsetWidth){
-    //     ballSpeedX=-1;
-    // }
-    // if(ball.getBoundingClientRect().left>posPaddleTwo.left && ball.getBoundingClientRect().left<posPaddleTwo.right && ball.getBoundingClientRect().top<posPaddleTwo.bottom && ball.getBoundingClientRect().top>posPaddleTwo.top){
-    //     ballSpeedX=1;
-    // }if(ball.getBoundingClientRect().left<posPaddleOne.right && ball.getBoundingClientRect().left>posPaddleOne.left && ball.getBoundingClientRect().top<posPaddleOne.bottom && ball.getBoundingClientRect().top>posPaddleOne.top){
-    //     ballSpeedX=-1;
-    // }
     if(ball.getBoundingClientRect().left<0 && ball.getBoundingClientRect().top<posPaddleOne.top+paddleOne.offsetHeight && ball.getBoundingClientRect().top>posPaddleOne.top){
-        ballSpeedX=1;
+        ballSpeedX=3;
+        ballSpeedY = Math.random()<0.5?-3:3;
     }if(ball.getBoundingClientRect().left>window.innerWidth-ball.offsetWidth && ball.getBoundingClientRect().top<posPaddleTwo.top+paddleTwo.offsetHeight && ball.getBoundingClientRect().top>posPaddleTwo.top){
-        ballSpeedX=-1;
+        ballSpeedX=-3;
+        ballSpeedY = Math.random()<0.5?-3:3;
     }
-    // if(ball.getBoundingClientRect().left<window.outerWidth){
-
-    //     location.reload();
-        
-    // }
-    // if(ball.getBoundingClientRect().left>window.outerWidth){
-    //     location.reload();
-    // }
+     if(ball.getBoundingClientRect().x<-5){
+        updatepaddleTwoScore();
+        ball.style.top="50%";
+        ball.style.left="50%";
+     }
+     if(ball.getBoundingClientRect().x>window.innerWidth){
+        updatepaddleOneScore();
+        ball.style.top="50%";
+        ball.style.left="50%";
+     }
 },10);
 
 document.addEventListener("keydown",(e)=>{
@@ -98,4 +92,19 @@ function update(){
             document.getElementById("paddleTwo").style.top = posPaddleTwo.top+10+"px";
         }
     }
+}
+
+function updatepaddleOneScore(){
+    console.log("updatepaddleOneScore");
+    let text = document.getElementById("playerOneScore");
+    let score = parseInt(text.innerText);
+    score++;
+    text.innerText = score;
+}
+function updatepaddleTwoScore(){
+    let text = document.getElementById("playerTwoScore");
+    let score = parseInt(text.innerText);
+    score++;
+    text.innerText = score;
+
 }
