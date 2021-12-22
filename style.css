@@ -1,5 +1,16 @@
 body{
     margin:10px solid black;
+    font-family: cursive;
+}
+h1{
+    text-align: center;
+}
+#paddleOneScore{
+    display: inline-block;
+}
+#paddleTwoScore{
+    display: inline-block;
+    margin-left: 50%;
 }
 
 #paddleOne{
